@@ -1,0 +1,21 @@
+/* Custom styles for the security log */
+.log-allow { color: #22c55e; } /* green-500 */
+.log-deny { color: #ef4444; } /* red-500 */
+.log-sim { color: #60a5fa; } /* blue-400 */
+
+/* Custom focus-visible for scenario buttons */
+.scenario-button:focus-visible {
+    outline: 2px solid #93c5fd; /* blue-300 */
+    outline-offset: 2px;
+}
+.scenario-button.active {
+    background-color: #1d4ed8; /* blue-700 */
+    box-shadow: 0 0 0 2px #60a5fa; /* blue-400 */
+}
+/* Ensure p5.js canvas is contained */
+#sketch-holder canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem; /* 8px */
+}

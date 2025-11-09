@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-900">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HFDS Interactive Prototype</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans text-gray-200 antialiased h-full flex flex-col">
+
+    <nav class="bg-gray-800 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-white">HFDS Prototype</div>
+            <div class="space-x-4">
+                <button onclick="showPage('page-home')" class="nav-button text-lg text-gray-300 hover:text-white px-3 py-2 rounded-md">Home</button>
+                <button onclick="showPage('page-simulation')" class="nav-button text-lg text-gray-300 hover:text-white px-3 py-2 rounded-md">Simulation</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow container mx-auto p-6">
+
+        <div id="page-home">
+            <div class="bg-gray-800 p-8 rounded-lg shadow-2xl">
+                
+                <img 
+                    src="https://placehold.co/1200x400/111827/60a5fa?text=HFDS+Prototype" 
+                    alt="Futuristic car dashboard interface"
+                    class="w-full h-48 object-cover rounded-lg mb-6"
+                    onerror="this.src='https://placehold.co/1200x400/111827/60a5fa?text=HFDS+Prototype'; this.onerror=null;"
+                >
+
+                <h1 class="text-4xl font-bold text-white mb-4">Hands-Free Driving System (HFDS)</h1>
+                <p class="text-xl text-gray-300 mb-6">
+                    This project is an interactive prototype of a Level 2 "hands-off" driving feature. The HFDS system allows a vehicle to automatically steer, accelerate, and brake in certain highway conditions. While active, the driver is continuously monitored to ensure they are engaged and ready to resume control.
+                </p>
+                <h2 class="text-2xl font-semibold text-white mb-3">Core Features Demonstrated:</h2>
+                <ul class="list-disc list-inside text-gray-300 space-y-2 mb-8">
+                    <li><strong>System Activation:</strong> Validating preconditions like speed, maps, and lane markings.</li>
+                    <li><strong>Driver Monitoring:</strong> Escalating warnings for driver inattention (visual, audio, haptic).</li>
+                    <li><strong>Fault Tolerance:</strong> Safely handing control back to the driver if a system fault occurs.</li>
+                    <li><strong>Manual Override:</strong> Allowing the driver to seamlessly take control at any time.</li>
+                </ul>
+                <button onclick="showPage('page-simulation'); showScenario('s1');" class="px-6 py-3 bg-blue-600 text-white font-bold text-lg rounded-lg hover:bg-blue-500 transition duration-300 shadow-lg">
+                    Go to Interactive Simulation &rarr;
+                </button>
+            </div>
+        </div>
+
+        <div id="page-simulation" class="hidden h-full">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
+                
+                <div class="lg:col-span-1 bg-gray-800 p-6 rounded-lg shadow-xl flex flex-col">
+                    <h2 class="text-2xl font-bold text-white mb-4">Test Scenarios</h2>
+                    <p class="text-gray-400 mb-6">Click a scenario to see instructions. Use the keyboard to interact with the simulation.</p>
+                    
+                    <div class="space-y-3 mb-6">
+                        <button id="btn-s1" onclick="showScenario('s1')" class="scenario-button w-full text-left p-4 bg-gray-700 hover:bg-gray-600 rounded-lg transition duration-200">
+                            <strong>Scenario 1:</strong> Activation & Inattention
+                        </button>
+                        <button id="btn-s2" onclick="showScenario('s2')" class="scenario-button w-full text-left p-4 bg-gray-700 hover:bg-gray-600 rounded-lg transition duration-200">
+                            <strong>Scenario 2:</strong> System Fault
+                        </button>
+                        <button id="btn-s3" onclick="showScenario('s3')" class="scenario-button w-full text-left p-4 bg-gray-700 hover:bg-gray-600 rounded-lg transition duration-200">
+                            <strong>Scenario 3:</strong> Manual Override
+                        </button>
+                    </div>
+                    
+                    <div id="scenario-instructions" class="bg-gray-900 p-4 rounded-lg flex-grow min-h-[200px]">
+                        </div>
+                </div>
+
+                <div class="lg:col-span-2 flex flex-col gap-6">
+                    <div id="sketch-holder" class="bg-gray-800 rounded-lg shadow-xl h-96 relative overflow-hidden">
+                        </div>
+                    
+                    <div class="bg-gray-800 p-4 rounded-lg shadow-xl flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-3">
+                             <h3 class="text-xl font-semibold text-white">Security & System Log</h3>
+                             <button onclick="clearLog()" class="text-sm bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded-md transition">Clear Log</button>
+                        </div>
+                        <div id="console-log" class="bg-black text-sm font-mono p-4 rounded-md h-48 overflow-y-auto">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="app.js"></script>
+    <script src="sketch.js"></script>
+</body>
+</html>
