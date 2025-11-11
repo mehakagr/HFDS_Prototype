@@ -196,13 +196,18 @@ const sketch = (p) => {
                 }
                 break;
             case 'f': // Scenario 2: System Fault
-                areLaneMarkingsVisible = !areLaneMarkingsVisible;
-                faultActive = !areLaneMarkingsVisible;
-                if (areLaneMarkingsVisible) {
+                if (!faultActive) { // Only trigger if not already faulted
+                    areLaneMarkingsVisible = false;
+                    faultActive = true;
+                    logToScreen("SIM: FAULT TRIGGERED. Lane markings lost.", "sim");
+                }
+                break;
+            case 'r': // Scenario 2: Repair Fault
+                if (faultActive) { // Only repair if faulted
+                    areLaneMarkingsVisible = true;
+                    faultActive = false;
                     logToScreen("SIM: Fault Cleared. Lane markings visible.", "sim");
                     checkEligibility();
-                } else {
-                    logToScreen("SIM: FAULT TRIGGERED. Lane markings lost.", "sim");
                 }
                 break;
         }

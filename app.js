@@ -30,7 +30,7 @@ const scenarioInstructions = {
             "<strong>Action 1:</strong> First, press <code>a</code> to activate the system.",
             "<strong>Action 2:</strong> Press <code>f</code> to simulate a lane marking fault.",
             "<strong>Result:</strong> The HMI will show 'FAULT DETECTED', and the road lines will disappear. Motion stops.",
-            "<strong>Action 3:</strong> Press <code>f</code> again to 'fix' the fault.",
+            "<strong>Action 3:</strong> Press <code>r</code> to 'repair' the fault.",
             "<strong>Action 4:</strong> Press <code>s</code> (Manual Override) to reset the system. It will return to 'Ready'."
         ]
     },
